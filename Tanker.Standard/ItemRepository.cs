@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,6 +46,19 @@ namespace Tanker.Standard
         {
             try
             {
+                if (await _db.Items.CountAsync() == 0)
+                {
+                    item.Consumption = 0;
+                }
+                else
+                {
+                    Item lastRefuel = await _db.Items.OrderByDescending(i => i.Mileage).FirstOrDefaultAsync();
+                    var consumption = (item.Amount / (item.Mileage - lastRefuel.Mileage) * 100);
+                    item.Consumption = (float)(Math.Round(consumption, 2));
+                }
+                var unitPrice = item.Price / item.Amount;
+                item.UnitPrice = (float)(Math.Round(unitPrice, 2));
+
                 var tracking = await _db.Items.AddAsync(item);
                 await _db.SaveChangesAsync();
                 var isAdded = tracking.State == EntityState.Added;
@@ -68,6 +82,25 @@ namespace Tanker.Standard
             {
                 return false;
             }
+        }
+
+        public async Task<bool> DeleteAllItems()
+        {
+            try
+            {
+                _db.Items.RemoveRange(_db.Items);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }            
+        }
+
+        public Task<bool> DeleteItemById(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

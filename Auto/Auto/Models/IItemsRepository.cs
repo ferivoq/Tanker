@@ -11,5 +11,7 @@ namespace Auto.Models
         Task<Item> GetItemByIdAsync(int id);
         Task<bool> AddItemAsync(Item item);
         Task<bool> UpdateItemAsync(Item item);
+        Task<bool> DeleteAllItems();
+        Task<bool> DeleteItemById(int id);
     }
 }

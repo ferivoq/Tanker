@@ -11,6 +11,7 @@ using Xamarin.Forms.Xaml;
 using Auto.Models;
 using Auto.Views;
 using Auto.ViewModels;
+using Auto.Services;
 
 namespace Auto.Views
 {
@@ -43,6 +44,16 @@ namespace Auto.Views
         async void AddItem_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+        }
+
+        async void RemoveALl_Clicked(object sender, EventArgs e)
+        {
+            var answer = await DisplayAlert("Are you stupid?", "Do you wan't to remove all of your shit?", "Yes", "No");
+            if (answer)
+            {
+                await db.data.DeleteAllItems();
+                OnPropertyChanged(nameof(viewModel.Items));
+            }
         }
 
         protected override void OnAppearing()
