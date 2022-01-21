@@ -12,7 +12,7 @@ export default class AddNew extends Component {
   render() {
     return (
       <View>
-        <label>Dátum:</label>
+        <Text>Dátum:</Text>
         <TextInput style={styles.input} lable="datum" />
       </View>
     );

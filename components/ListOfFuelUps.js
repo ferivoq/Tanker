@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import AddNew from "./AddNew";
 import CustomComponent from "./CustomComponent";
+import { Alert } from "react-native";
+import * as Rootnavigation from "../RootNavigation";
 
 import {
   View,
@@ -10,6 +12,7 @@ import {
   StyleSheet,
   Button,
 } from "react-native";
+import { RootTagContext } from "react-native/Libraries/ReactNative/RootTag";
 
 const fuelUp = [
   {
@@ -47,12 +50,27 @@ export default class ListOfFuelUps extends Component {
   constructor(props) {
     super(props);
   }
+  showAlert1() {
+    // Alert.alert("Alert Title", "My Alert Msg", [
+    //   {
+    //     text: "Cancel",
+    //     onPress: () => console.log("Cancel Pressed"),
+    //     style: "cancel",
+    //   },
+    //   { text: "OK", onPress: () => console.log("OK Pressed") },
+    // ]);
+  }
   render() {
     var that = this;
     return (
       <View style={styles.container}>
+        <Button
+          title={"3-Button Alert"}
+          onPress={() => Rootnavigation.navigate("AddNew")}
+        />
         {fuelUp.map((curr, i, array) => (
           <CustomComponent
+            onStartShouldSetResponder={() => Rootnavigation.navigate("AddNew")}
             FuelUp={curr}
             PreviousFuelUp={i != 0 ? array[i - 1] : undefined}
           />
@@ -66,7 +84,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
     alignItems: "center",
-    paddingTop: "20px",
+    // paddingTop: "20px",
   },
   actionButtonIcon: {
     fontSize: 20,

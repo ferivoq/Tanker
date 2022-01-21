@@ -1,6 +1,10 @@
 {
-  "webpackServerPort": 19006,
-  "expoServerPort": null,
   "devToolsPort": 19002,
-  "packagerPort": 19000
+  "expoServerPort": 19000,
+  "packagerPort": 19000,
+  "expoServerNgrokUrl": "https://ky-2gp.h-adam.my-app.exp.direct",
+  "packagerNgrokUrl": "https://packager.ky-2gp.h-adam.my-app.exp.direct",
+  "ngrokPid": 23012,
+  "packagerPid": null,
+  "webpackServerPort": 19006
 }

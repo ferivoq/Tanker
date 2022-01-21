@@ -1,11 +1,15 @@
+import { StatusBar } from "expo-status-bar";
 import * as React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { navigationRef } from "./RootNavigation";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import AddNew from "./components/AddNew";
+
 import CustomComponent from "./components/CustomComponent";
 import ListOfFuelUps from "./components/ListOfFuelUps";
+import AddNew from "./components/AddNew";
+
 const Stack = createStackNavigator();
-import { navigationRef } from "./RootNavigation";
 
 function MyStack() {
   return (
@@ -46,3 +50,12 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});

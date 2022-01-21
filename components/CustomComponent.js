@@ -37,53 +37,27 @@ export default class CustomComponent extends Component {
   render() {
     return (
       <View style={styles.top}>
-        <table
-          onClick={() => {
-            RootNavigation.navigate("AddNew");
-          }}
-        >
-          <tbody>
-            <tr>
-              <td>
-                <Text style={styles.text}>{this.props.FuelUp.date}</Text>
-              </td>
-              <td>
-                <Text style={styles.text}>
-                  {this.props.FuelUp.price
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}{" "}
-                  Ft
-                </Text>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Text style={styles.text}>
-                  {this.props.FuelUp.mileage
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}{" "}
-                  km
-                </Text>
-              </td>
-              <td>
-                <Text style={styles.text}>{this.props.FuelUp.volume} l</Text>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Text style={styles.text}>{this.km} km</Text>
-              </td>
-              <td>
-                <Text style={styles.text}>{this.pricePerKm} Ft/km</Text>
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="2">
-                <Text style={styles.text}>{this.consuption} l/100km</Text>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <Text style={styles.text}>
+          {this.props.FuelUp.price
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}{" "}
+          Ft
+        </Text>
+
+        <Text style={styles.text}>
+          {this.props.FuelUp.mileage
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}{" "}
+          km
+        </Text>
+
+        <Text style={styles.text}>{this.props.FuelUp.volume} l</Text>
+
+        <Text style={styles.text}>{this.km} km</Text>
+
+        <Text style={styles.text}>{this.pricePerKm} Ft/km</Text>
+
+        <Text style={styles.text}>{this.consuption} l/100km</Text>
       </View>
     );
   }
@@ -98,9 +72,9 @@ const styles = StyleSheet.create({
   top: {
     backgroundColor: "#6c757d",
     borderRadius: 20,
-    width: 1000,
+    width: 400,
     marginBottom: 10,
-    padding: "10px",
+    padding: 10,
   },
   text: {
     color: "#fff",
