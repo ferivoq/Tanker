@@ -64,10 +64,10 @@ export default class ListOfFuelUps extends Component {
     var that = this;
     return (
       <View style={styles.container}>
-        <Button
+        {/* <Button
           title={"3-Button Alert"}
           onPress={() => Rootnavigation.navigate("AddNew")}
-        />
+        /> */}
         {fuelUp.map((curr, i, array) => (
           <CustomComponent
             onStartShouldSetResponder={() => Rootnavigation.navigate("AddNew")}

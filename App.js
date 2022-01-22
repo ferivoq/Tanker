@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import { navigationRef } from "./RootNavigation";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -16,18 +16,25 @@ function MyStack() {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#621FF7",
+          backgroundColor: "#fff",
         },
-        headerTintColor: "#fff",
+        headerTintColor: "#000",
+        headerTitleAlign: "center",
+        headerShadowVisible: false,
         headerTitleStyle: {
-          fontWeight: "bold",
+          alignSelf: "center",
+          fontSize: 30,
         },
       }}
     >
       <Stack.Screen
         name="ListOfFuelUps"
         component={ListOfFuelUps}
-        options={{ title: "Tankolás lista" }}
+        options={{
+          title: "Toyota",
+          headerRight: () => <Text style={styles.headerRight}>Szűrő</Text>,
+          headerLeft: () => <Text style={styles.headerLeft}>+</Text>,
+        }}
       />
       <Stack.Screen
         name="AddNew"
@@ -57,5 +64,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  headerRight: {
+    marginRight: 15,
+    fontSize: 18,
+    color: "#5cb075",
+  },
+  headerLeft: {
+    fontSize: 30,
+    marginLeft: 20,
+    color: "#5cb075",
   },
 });
